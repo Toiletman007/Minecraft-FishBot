@@ -7,11 +7,11 @@ screenWidth, screenHeight = pyautogui.size()
 #pyautogui.moveTo(1920, 1080)
 x=0
 z=0
-y=0
+y: int=0
 #Definitions!!!
 
 def find_itL(images, clicks, off_x=0, off_y=0):
-    position = pt.locateCenterOnScreen(images, confidence=.80)
+    position = pt.locateCenterOnScreen(images, confidence=.75)
     if position is None:
         print('image not foundL')
 
@@ -24,13 +24,13 @@ def find_itL(images, clicks, off_x=0, off_y=0):
 
 # Fishing
 def finditR2(images, clicks, off_x=0, off_y=0):
-    position = pt.locateCenterOnScreen(images, confidence=.66)
+    position = pt.locateCenterOnScreen(images, confidence=.50)
     if position is None:
         print('image not foundR2')
         return 0
     else:
         global y
-        print('Find Fish succesful!')
+        print('Find Fish successful!')
         y = y + 1
         pt.moveTo(position, duration=.1)
         pt.moveRel(off_x, off_y, duration=.1)
@@ -48,11 +48,6 @@ def Inptake():
 def change_text():
     pakito["text"] = "Working..."
     try:
-        sleep(1)
-        print('5')
-        sleep(1)
-        print('4')
-        sleep(1)
         print('3')
         sleep(1)
         print('2')
@@ -66,33 +61,32 @@ def change_text():
 
         while True:
             finditR2('images/SplashV2.png', 1)
-
             if y==int(z):
-                print("Konec!")
-            break
+                print("The end!")
+                break
 
     except ValueError:
-        print('To neni cislo debile')
+        print("That isn't a number")
         gugu = customtkinter.CTk()
         gugu.geometry(f"{500}x{500}")
         gugu.geometry(f"{450}x{160}+{900}+{520}")
         gugu.title("ERROR!")
         gaga = customtkinter.CTkLabel(gugu, text="Input Error", text_color="red", text_font = ("Comic Sans MS", 60))
         gaga.pack()
-        ladygaga = customtkinter.CTkLabel(gugu, text="Try inputing numbers dumbass", text_color="red", text_font=("Comic Sans MS", 10))
+        ladygaga = customtkinter.CTkLabel(gugu, text="Please input numbers only", text_color="red", text_font=("Comic Sans MS", 10))
         ladygaga.pack()
         gugu.mainloop()
 
 #def change text():
-#Label_1["text"] = input_1.get()
+
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Window
 
 window = customtkinter.CTk()
 window.title("F.b.")
-window.geometry('1x1+20+200')   # velikost velikost misto misto
-window.minsize(260, 260)               #velikost
-window.iconbitmap('icons/Fish.ico')       #ikona
+window.geometry('1x1+20+200')
+window.minsize(260, 260)
+window.iconbitmap('icons/Fish.ico')
 window.resizable(False, False)
 
 
@@ -123,9 +117,3 @@ text1.pack(pady=15)
 
 
 window.mainloop()    #Cycle
-#pyautogui.keyDown('alt')
-#pyautogui.press('f4')
-#pyautogui.keyUp('alt')
-#time.sleep(10) freeze for 10s
-#print(uptimes.uptimes())
-#print(uptimes.raw_uptimes()) both of these printout the uptime of the app
