@@ -8,24 +8,56 @@ screenWidth, screenHeight = pyautogui.size()
 x=0
 z=0
 y: int=0
-notLocated: int = 0
+notLocated = 1
 #Definitions!!!
 
-def find_itL(images, clicks, off_x=0, off_y=0):
-    position = pt.locateCenterOnScreen(images, confidence=.75)
+def find_itL(images1, images2, images3, images4, clicks):
+    global notLocated
+    notLocated = 1
+    position = pt.locateCenterOnScreen(images1, confidence=.75)
     if position is None:
-        print('image not foundL')
-        notLocated = 1
-
-        return 0
+        print("L1 not found 1")
+        position = pt.locateCenterOnScreen(images2, confidence=.75)
     else:
+        notLocated = 0
+        print("Not located is zero 1")
         pt.moveTo(position, duration=.1)
-        pt.moveRel(off_x, off_y, duration=.1)
         pt.click(clicks=clicks, interval=.3)
+        return notLocated
+
+    if position is None:
+        print("L1 not found 2")
+        position = pt.locateCenterOnScreen(images3, confidence=.75)
+    else:
+        notLocated = 0
+        print("Not located is zero 2")
+        pt.moveTo(position, duration=.1)
+        pt.click(clicks=clicks, interval=.3)
+        return notLocated
+
+    if position is None:
+        print("L1 not found 3")
+        position = pt.locateCenterOnScreen(images4, confidence=.75)
+    else:
+        notLocated = 0
+        print("Not located is zero 3")
+        pt.moveTo(position, duration=.1)
+        pt.click(clicks=clicks, interval=.3)
+        return notLocated
+
+    if position is None:
+        print("L1 not found 4")
+
+    else:
+        notLocated = 0
+        print("Not located is zero 4")
+        pt.moveTo(position, duration=.1)
+        pt.click(clicks=clicks, interval=.3)
+        return notLocated
 
 # Fishing
-def finditR2(images, clicks, off_x=0, off_y=0):
-    position = pt.locateCenterOnScreen(images, confidence=.55)
+def finditR2(imagesGUI1, clicks):
+    position = pt.locateCenterOnScreen(imagesGUI1, confidence=.95)
     if position is None:
         print('image not foundR2')
         return 0
@@ -35,7 +67,7 @@ def finditR2(images, clicks, off_x=0, off_y=0):
         y = y + 1
         pt.click(button='right', clicks=clicks, interval=.3)
         print(y, "/", z)
-        sleep(.5)
+        sleep(1)
         pt.click(button='right', clicks=clicks, interval=.3)
 
 def Inptake():
@@ -51,18 +83,18 @@ def change_text():
         print('2')
         sleep(1)
         print('1')
-        find_itL('images/StartV2.png', 2)
+        #Starts the search for the Back to game button
         sleep(.5)
         while(notLocated == 1):
             sleep(.5)
-            find_itL('images/StartV2.png', 2)
+            find_itL('images/startSize1.png', 'images/startSize2.png', 'images/startSize3.png', 'images/startSize4.png', 2)
 
         sleep(0.5)
         #First right click for the fishing to start
         pt.click(button='right')
 
         while True:
-            finditR2('images/SplashV2.png', 1)
+            finditR2('images/SplashV4.png', 1)
             if y==int(z):
                 print("The end!")
                 break
