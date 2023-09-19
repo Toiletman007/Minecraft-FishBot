@@ -139,4 +139,4 @@ pakito.pack(pady=3.5)
 text1 = customtkinter.CTkLabel(window, text="Made by Toiletman", bg="#3c3b3c", relief="sunken") #tkinter.Label , bg fg text , Font size type(Bold italic)
 text1.pack(pady=15)
 
-window.mainloop()    #Cycle
+window.mainloop()    #Cycle.
