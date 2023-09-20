@@ -107,7 +107,7 @@ def change_text():
         gugu.title("ERROR!")
         gaga = customtkinter.CTkLabel(gugu, text="Input Error", text_color="red", text_font = ("Comic Sans MS", 60))
         gaga.pack()
-        ladygaga = customtkinter.CTkLabel(gugu, text="Please input numbers only", text_color="red", text_font=("Comic Sans MS", 10))
+        ladygaga = customtkinter.CTkLabel(gugu, text="Please input numbers only", text_color="red", text_font=("Comic Sans MS", 20))
         ladygaga.pack()
         gugu.mainloop()
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -119,24 +119,24 @@ window.minsize(260, 260)
 window.iconbitmap('icons/Fish.ico')
 window.resizable(False, False)
 
-grug = customtkinter.CTkLabel(window, text="Hold your Fishing Rod!", text_color="red", text_font=("Bebas Neue", 14))
+grug = customtkinter.CTkLabel(window, text="Hold your Fishing Rod!", text_color="red", text_font=("Roboto", 18))
 grug.pack()
 
-text2 = customtkinter.CTkLabel(window, text="Number of Fish: ", bg="#3c3b3c", fg=("#FF813E"))
+text2 = customtkinter.CTkLabel(window, text="Number of Fish: ")
 text2.pack()
 
-elpepe = customtkinter.CTkEntry(width=69, bg="#5A5A5A", fg="#FF7420")
-elpepe.config()
+elpepe = customtkinter.CTkEntry(window, width=69)
+elpepe.configure()
 elpepe.pack(pady=5)
 elpepe.get()
 
-pakito2 = customtkinter.CTkButton(text="Save Input", bg="#3c3b3c", command=Inptake)
+pakito2 = customtkinter.CTkButton(window, text="Save Input", bg_color="#3c3b3c", corner_radius=0, command=Inptake)
 pakito2.pack(pady=3.5)
 
-pakito = customtkinter.CTkButton(fg_color="#E7A642", hover_color="#FF0000", text="Start!", bg="#E7A642", command=change_text)
+pakito = customtkinter.CTkButton(window, fg_color="#E7A642", hover_color="#BF7708", text="Start!", corner_radius=0, bg_color="#E7A642", command=change_text)
 pakito.pack(pady=3.5)
 
-text1 = customtkinter.CTkLabel(window, text="Made by Toiletman", bg="#3c3b3c", relief="sunken") #tkinter.Label , bg fg text , Font size type(Bold italic)
+text1 = customtkinter.CTkLabel(window, text="Made by Toiletman")
 text1.pack(pady=15)
 
-window.mainloop()    #Cycle.
+window.mainloop()    #Cycle
