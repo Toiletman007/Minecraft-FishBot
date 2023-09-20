@@ -119,7 +119,7 @@ window.minsize(260, 260)
 window.iconbitmap('icons/Fish.ico')
 window.resizable(False, False)
 
-grug = customtkinter.CTkLabel(window, text="Hold your Fishing Rod!", text_color="red", text_font=("Roboto", 18))
+grug = customtkinter.CTkLabel(window, text="Hold your Fishing Rod!", text_color="red", font=("Roboto", 24))
 grug.pack()
 
 text2 = customtkinter.CTkLabel(window, text="Number of Fish: ")
