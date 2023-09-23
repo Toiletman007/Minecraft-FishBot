@@ -5,7 +5,7 @@ I made this minecraft fish bot as my first project in python so be nice :D
 Also, big thanks to [Kostahe](https://github.com/Kostahe) for help with some issues along the way.
 
 GUI:
-For the GUI I used custom tkinter because i think it's a bit better then tkinter.
+For the GUI I used custom Tkinter because i think it's a bit better then Tkinter.
 
 
 ![image](https://github.com/Toiletman007/Minecraft-FishBot/assets/138164750/9f0ec985-8319-424c-8c4f-f50688a5e5cb)
