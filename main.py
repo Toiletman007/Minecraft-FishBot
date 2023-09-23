@@ -2,6 +2,7 @@ import pyautogui
 import pyautogui as pt
 from time import sleep
 import customtkinter
+import threading
 from tkinter import font
 #Variables
 screenWidth, screenHeight = pyautogui.size()
@@ -11,7 +12,6 @@ user_input_variable: int = 0
 current_fish_amount: int = 0
 not_located: bool = True
 #Definitions!!!
-
 def find_itL(images1, images2, images3, images4, clicks):
     global not_located
     not_located = True
@@ -71,7 +71,8 @@ def finditR2(imagesGUI1, clicks):
         sleep(1)
         pt.click(button='right', clicks=clicks, interval=.3)
 
-def userInput():
+
+def user_input():
     global user_input_variable
     try:
         user_input_variable = int(user_input_window.get())
@@ -89,8 +90,7 @@ def userInput():
         error_root.mainloop()
 
 
-def startButton():
-
+def start_button():
 
 #Starts the search for the Back to game button
 
@@ -128,10 +128,10 @@ user_input_window.configure()
 user_input_window.pack(pady=5)
 user_input_window.get()
 
-save_user_input_button = customtkinter.CTkButton(root, text="Save Input", bg_color="#3c3b3c", corner_radius=0, command=userInput)
+save_user_input_button = customtkinter.CTkButton(root, text="Save Input", bg_color="#3c3b3c", corner_radius=0, command=user_input)
 save_user_input_button.pack(pady=3.5)
 
-start_button_on_GUI = customtkinter.CTkButton(root, fg_color="#E7A642", hover_color="#BF7708", text="Start!", corner_radius=0, bg_color="#E7A642", command=startButton)
+start_button_on_GUI = customtkinter.CTkButton(root, fg_color="#E7A642", hover_color="#BF7708", text="Start!", corner_radius=0, bg_color="#E7A642", command=start_button)
 start_button_on_GUI.pack(pady=3.5)
 
 bottom_text = customtkinter.CTkLabel(root, text="Made by Toiletman")
