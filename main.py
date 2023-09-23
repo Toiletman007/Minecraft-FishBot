@@ -11,7 +11,10 @@ x=0
 user_input_variable: int = 0
 current_fish_amount: int = 0
 not_located: bool = True
+thread_switch = True
 #Definitions!!!
+print(threading.activeCount())
+print(threading.enumerate())
 def find_itL(images1, images2, images3, images4, clicks):
     global not_located
     not_located = True
@@ -55,9 +58,9 @@ def find_itL(images1, images2, images3, images4, clicks):
         pt.moveTo(position, duration=.1)
         pt.click(clicks=clicks, interval=.3)
         return not_located
-
 # Fishing
 def finditR2(imagesGUI1, clicks):
+    print(threading.enumerate())
     position = pt.locateCenterOnScreen(imagesGUI1, confidence=.95)
     if position is None:
         print('image not foundR2')
@@ -65,33 +68,24 @@ def finditR2(imagesGUI1, clicks):
     else:
         global current_fish_amount
         print('Find Fish successful!')
-        current_fish_amount += current_fish_amount
+        current_fish_amount += 1
         pt.click(button='right', clicks=clicks, interval=.3)
         print(current_fish_amount, "/", user_input_variable)
         sleep(1)
         pt.click(button='right', clicks=clicks, interval=.3)
-
-
+        sleep(1.4)
 def user_input():
+    print(threading.enumerate())
     global user_input_variable
     try:
         user_input_variable = int(user_input_window.get())
         print(f"Total Fish to be caught: {user_input_variable}")
     except ValueError:
+        user_input_window.delete(0, 999999999)
         print("That isn't a number")
-        error_root = customtkinter.CTk()
-        error_root.geometry(f"{500}x{500}")
-        error_root.geometry(f"{450}x{160}+{900}+{520}")
-        error_root.title("ERROR!")
-        error_text1 = customtkinter.CTkLabel(error_root, text="Input Error", text_color="red", text_font=("Comic Sans MS", 60))
-        error_text1.pack()
-        error_text2 = customtkinter.CTkLabel(error_root, text="Please input numbers only", text_color="red", text_font=("Comic Sans MS", 20))
-        error_text2.pack()
-        error_root.mainloop()
-
-
+        error_message = customtkinter.CTkLabel(root, text="Error: Input whole numbers only", text_font=("Roboto", 12), text_color="red")
+        error_message.pack(pady=5)
 def start_button():
-
 #Starts the search for the Back to game button
 
     while not_located:
@@ -106,8 +100,21 @@ def start_button():
         finditR2('images/SplashV4.png', 1)
         if current_fish_amount == int(user_input_variable):
             print("The end!")
+            thread_switch = True
             break
 
+def user_input2():
+    user_input_thread = threading.Thread(target=user_input, args=())
+    user_input_thread.start()
+def start_button2():
+    global thread_switch
+    start_button_thread = threading.Thread(target=start_button, args=())
+    if(thread_switch):
+        thread_switch = False
+        start_button_thread.start()
+    else:
+        print("start button thread already running")
+    return thread_switch
 #-----------------------------------------------------------------------------------------------------------------------------------------------
 #Window
 root = customtkinter.CTk()
@@ -128,10 +135,10 @@ user_input_window.configure()
 user_input_window.pack(pady=5)
 user_input_window.get()
 
-save_user_input_button = customtkinter.CTkButton(root, text="Save Input", bg_color="#3c3b3c", corner_radius=0, command=user_input)
+save_user_input_button = customtkinter.CTkButton(root, text="Save Input", bg_color="#3c3b3c", corner_radius=0, command=user_input2)
 save_user_input_button.pack(pady=3.5)
 
-start_button_on_GUI = customtkinter.CTkButton(root, fg_color="#E7A642", hover_color="#BF7708", text="Start!", corner_radius=0, bg_color="#E7A642", command=start_button)
+start_button_on_GUI = customtkinter.CTkButton(root, fg_color="#E7A642", hover_color="#BF7708", text="Start!", corner_radius=0, bg_color="#E7A642", command=start_button2)
 start_button_on_GUI.pack(pady=3.5)
 
 bottom_text = customtkinter.CTkLabel(root, text="Made by Toiletman")
