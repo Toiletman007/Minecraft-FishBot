@@ -3,7 +3,6 @@ import pyautogui as pt
 from time import sleep
 import customtkinter
 import threading
-from tkinter import font
 #Variables
 screenWidth, screenHeight = pyautogui.size()
 #pyautogui.moveTo(1920, 1080)
@@ -80,10 +79,11 @@ def user_input():
     try:
         user_input_variable = int(user_input_window.get())
         print(f"Total Fish to be caught: {user_input_variable}")
+        number_of_fish.configure(text=f"Number of Fish: {current_fish_amount} / {user_input_variable}")
     except ValueError:
         user_input_window.delete(0, 999999999)
         print("That isn't a number")
-        error_message = customtkinter.CTkLabel(root, text="Error: Input whole numbers only", text_font=("Roboto", 12), text_color="red")
+        error_message = customtkinter.CTkLabel(root, text="Error: Input whole numbers only", text_color="red")
         error_message.pack(pady=5)
 def start_button():
 #Starts the search for the Back to game button
@@ -98,6 +98,7 @@ def start_button():
 
     while True:
         finditR2('images/SplashV4.png', 1)
+        number_of_fish.configure(text=f"Number of Fish: {current_fish_amount} / {user_input_variable}")
         if current_fish_amount == int(user_input_variable):
             print("The end!")
             thread_switch = True
@@ -124,24 +125,24 @@ root.minsize(260, 260)
 root.iconbitmap('icons/Fish.ico')
 root.resizable(False, False)
 
-hold_fishing_rod_text = customtkinter.CTkLabel(root, text="Hold your Fishing Rod!", text_color="red", text_font=("Roboto", 16))
+hold_fishing_rod_text = customtkinter.CTkLabel(master=root, text="Hold your Fishing Rod!", text_color="red")
 hold_fishing_rod_text.pack()
 
-number_of_fish = customtkinter.CTkLabel(root, text="Number of Fish: ")
+number_of_fish = customtkinter.CTkLabel(master=root, text=f"Number of Fish: ")
 number_of_fish.pack()
 
-user_input_window = customtkinter.CTkEntry(root, width=69)
+user_input_window = customtkinter.CTkEntry(master=root, width=69)
 user_input_window.configure()
 user_input_window.pack(pady=5)
 user_input_window.get()
 
-save_user_input_button = customtkinter.CTkButton(root, text="Save Input", bg_color="#3c3b3c", corner_radius=0, command=user_input2)
+save_user_input_button = customtkinter.CTkButton(master=root, text="Save Input", bg_color="#3c3b3c", corner_radius=0, command=user_input2)
 save_user_input_button.pack(pady=3.5)
 
-start_button_on_GUI = customtkinter.CTkButton(root, fg_color="#E7A642", hover_color="#BF7708", text="Start!", corner_radius=0, bg_color="#E7A642", command=start_button2)
+start_button_on_GUI = customtkinter.CTkButton(master=root, fg_color="#E7A642", hover_color="#BF7708", text="Start!", corner_radius=0, bg_color="#E7A642", command=start_button2)
 start_button_on_GUI.pack(pady=3.5)
 
-bottom_text = customtkinter.CTkLabel(root, text="Made by Toiletman")
+bottom_text = customtkinter.CTkLabel(master=root, text="Made by Toiletman")
 bottom_text.pack(pady=15)
 
 root.mainloop()    #Cycle
