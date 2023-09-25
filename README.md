@@ -22,4 +22,8 @@ How it works is that you input the ammount of fish you want to fish out, and the
 It will automaticaly click back to game for you and automatically start casting the rod however you do have to have subtitles in english turned on and you do have to have your fishing rod in hand aimed at the water. Also pyauto gui aka the libary responsible for key strokes does not support second or third monitors so if you want this to work you have to have it open on your first monitor.
 Here's a video of it in action:   
 
+
+https://github.com/Toiletman007/Minecraft-FishBot/assets/138164750/5aeff543-a96c-48cd-9ac4-3b7be67e1212
+
+
 If you want to download, it just download ToiletsFishBot.rar, after you unzip it theres a .exe in there.
