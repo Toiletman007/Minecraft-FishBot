@@ -2,6 +2,7 @@
 Minecraft fishing bot in python
 
 I made this minecraft fish bot as my first project in python so be nice :D
+Sorry that the repo is so scuffed i didn't want to loose the activity and if u look at my other repos i know how to share a project on github so don't tell me about it i know this is an incredibly stupid repo.
 Also, big thanks to [Kostahe](https://github.com/Kostahe) for help with some issues along the way.
 
 GUI:
