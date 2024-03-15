@@ -12,7 +12,7 @@ current_fish_amount: int = 0
 not_located: bool = True
 thread_switch = True
 #Definitions!!!
-print(threading.activeCount())
+print(threading.active_count())
 print(threading.enumerate())
 def find_itL(images1, images2, images3, images4, clicks):
     global not_located
@@ -30,7 +30,7 @@ def find_itL(images1, images2, images3, images4, clicks):
 
     if position is None:
         print("L1 not found 2")
-        position = pt.locateCenterOnScreen(images3, confidence=.75)
+        position = pt.locateCenterOnScreen(images3, confidence=.9)
     else:
         not_located = False
         print("Not located is zero 2")
@@ -40,7 +40,7 @@ def find_itL(images1, images2, images3, images4, clicks):
 
     if position is None:
         print("L1 not found 3")
-        position = pt.locateCenterOnScreen(images4, confidence=.75)
+        position = pt.locateCenterOnScreen(images4, confidence=.9)
     else:
         not_located = False
         print("Not located is zero 3")
@@ -89,8 +89,8 @@ def start_button():
 #Starts the search for the Back to game button
 
     while not_located:
-        sleep(.5)
-        find_itL('images/startSize1.png', 'images/startSize2.png', 'images/startSize3.png', 'images/startSize4.png', 2)
+        sleep(2)
+        find_itL('images/startSize1.png', 'images/startSize2.png', 'images/startSize3.png', 'images/startSize4.png', 3)
 
     sleep(0.5)
         #First right click for the fishing to start
