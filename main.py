@@ -3,17 +3,20 @@ import pyautogui as pt
 from time import sleep
 import customtkinter
 import threading
-#Variables
+
+# Variables
 screenWidth, screenHeight = pyautogui.size()
-#pyautogui.moveTo(1920, 1080)
-x=0
+# pyautogui.moveTo(1920, 1080)
+x = 0
 user_input_variable: int = 0
 current_fish_amount: int = 0
 not_located: bool = True
 thread_switch = True
-#Definitions!!!
+# Definitions!!!
 print(threading.active_count())
 print(threading.enumerate())
+
+
 def find_itL(images1, images2, images3, images4, clicks):
     global not_located
     not_located = True
@@ -57,6 +60,8 @@ def find_itL(images1, images2, images3, images4, clicks):
         pt.moveTo(position, duration=.1)
         pt.click(clicks=clicks, interval=.3)
         return not_located
+
+
 # Fishing
 def finditR2(imagesGUI1, clicks):
     print(threading.enumerate())
@@ -73,6 +78,8 @@ def finditR2(imagesGUI1, clicks):
         sleep(1)
         pt.click(button='right', clicks=clicks, interval=.3)
         sleep(1.4)
+
+
 def user_input():
     print(threading.enumerate())
     global user_input_variable
@@ -85,15 +92,17 @@ def user_input():
         print("That isn't a number")
         error_message = customtkinter.CTkLabel(root, text="Error: Input whole numbers only", text_color="red")
         error_message.pack(pady=5)
+
+
 def start_button():
-#Starts the search for the Back to game button
+    # Starts the search for the Back to game button
 
     while not_located:
         sleep(2)
         find_itL('images/startSize1.png', 'images/startSize2.png', 'images/startSize3.png', 'images/startSize4.png', 3)
 
     sleep(0.5)
-        #First right click for the fishing to start
+    # First right click for the fishing to start
     pt.click(button='right')
 
     while True:
@@ -104,20 +113,25 @@ def start_button():
             thread_switch = True
             break
 
+
 def user_input2():
     user_input_thread = threading.Thread(target=user_input, args=())
     user_input_thread.start()
+
+
 def start_button2():
     global thread_switch
     start_button_thread = threading.Thread(target=start_button, args=())
-    if(thread_switch):
+    if (thread_switch):
         thread_switch = False
         start_button_thread.start()
     else:
         print("start button thread already running")
     return thread_switch
-#-----------------------------------------------------------------------------------------------------------------------------------------------
-#Window
+
+
+# -----------------------------------------------------------------------------------------------------------------------------------------------
+# Window
 root = customtkinter.CTk()
 root.title("F.b.")
 root.geometry('1x1+20+200')
@@ -136,13 +150,15 @@ user_input_window.configure()
 user_input_window.pack(pady=5)
 user_input_window.get()
 
-save_user_input_button = customtkinter.CTkButton(master=root, text="Save Input", bg_color="#3c3b3c", corner_radius=0, command=user_input2)
+save_user_input_button = customtkinter.CTkButton(master=root, text="Save Input", bg_color="#3c3b3c", corner_radius=0,
+                                                 command=user_input2)
 save_user_input_button.pack(pady=3.5)
 
-start_button_on_GUI = customtkinter.CTkButton(master=root, fg_color="#E7A642", hover_color="#BF7708", text="Start!", corner_radius=0, bg_color="#E7A642", command=start_button2)
+start_button_on_GUI = customtkinter.CTkButton(master=root, fg_color="#E7A642", hover_color="#BF7708", text="Start!",
+                                              corner_radius=0, bg_color="#E7A642", command=start_button2)
 start_button_on_GUI.pack(pady=3.5)
 
 bottom_text = customtkinter.CTkLabel(master=root, text="Made by Toiletman")
 bottom_text.pack(pady=15)
 
-root.mainloop()    #Cycle
+root.mainloop()  # Cycle
