@@ -1,4 +1,4 @@
-# Minecraft-FishBot - FIXED!
+# Minecraft-FishBot - Working 2026
 Minecraft fishing bot in python
 
 I made this minecraft fish bot as my first project in python so be nice :D
