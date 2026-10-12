@@ -133,7 +133,7 @@ def start_button2():
 # -----------------------------------------------------------------------------------------------------------------------------------------------
 # Window
 root = customtkinter.CTk()
-root.title("F.b.")
+root.title("Fish Bot")
 root.geometry('1x1+20+200')
 root.minsize(260, 260)
 root.iconbitmap('icons/Fish.ico')
